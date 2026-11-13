@@ -1,0 +1,21 @@
+{
+  "name": "supply-chain-provenance",
+  "version": "2.0.0",
+  "description": "Blockchain supply chain provenance tracker: Solidity contract, Hardhat tests, React frontend",
+  "scripts": {
+    "setup": "npm install && npm --prefix frontend install",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "gas": "REPORT_GAS=true hardhat test",
+    "node": "hardhat node",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "frontend": "npm --prefix frontend run dev",
+    "demo": "node scripts/demo.js"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.0"
+  }
+}

@@ -1,0 +1,19 @@
+require("dotenv").config();
+require("@nomicfoundation/hardhat-toolbox");
+
+const { SEPOLIA_RPC_URL, PRIVATE_KEY, REPORT_GAS } = process.env;
+
+/** @type import('hardhat/config').HardhatUserConfig */
+module.exports = {
+  solidity: {
+    version: "0.8.24",
+    settings: { optimizer: { enabled: true, runs: 200 } },
+  },
+  networks: {
+    localhost: { url: "http://127.0.0.1:8545" },
+    ...(SEPOLIA_RPC_URL && PRIVATE_KEY
+      ? { sepolia: { url: SEPOLIA_RPC_URL, accounts: [PRIVATE_KEY], chainId: 11155111 } }
+      : {}),
+  },
+  gasReporter: { enabled: REPORT_GAS === "true" },
+};
